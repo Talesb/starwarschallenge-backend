@@ -38,7 +38,7 @@ public class PlanetaService {
 		PlanetaResponseDTO responseEncontrado = responseOptional
 				.orElseThrow(() -> new PlanetaNotFoundException("Erro durante a requisição, nada foi encontrado"));
 
-		if (!responseEncontrado.getResults().isEmpty()) {
+		if (responseEncontrado.getResults() != null && !responseEncontrado.getResults().isEmpty()) {
 			List<PlanetaResponseResultDTO> planetaEncontrados = responseEncontrado.getResults();
 			List<String> films = planetaEncontrados.get(0).getFilms();
 			Planeta planetaAserSalvo = new Planeta(planetaDTO.getNome(), planetaDTO.getClima(), planetaDTO.getTerreno(),
