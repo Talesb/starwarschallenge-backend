@@ -12,6 +12,7 @@ import br.com.starwarschallenge.exception.PlanetaNotFoundException;
 import br.com.starwarschallenge.model.Planeta;
 import br.com.starwarschallenge.model.PlanetaDTO;
 import br.com.starwarschallenge.model.PlanetaResponseDTO;
+import br.com.starwarschallenge.model.PlanetaResponseResultDTO;
 import br.com.starwarschallenge.model.ResponseResultDTO;
 import br.com.starwarschallenge.repository.PlanetaRepository;
 import br.com.starwarschallenge.restclient.StarWarsRestClient;
@@ -31,20 +32,15 @@ public class PlanetaService {
 
 		this.verificarDTO(planetaDTO);
 
-		Optional<ResponseResultDTO> responseOptional = starWarsRestClient.findByName(URL, planetaDTO.getNome(),
-				ResponseResultDTO.class);
+		Optional<PlanetaResponseDTO> responseOptional = starWarsRestClient.findByName(URL, planetaDTO.getNome(),
+				PlanetaResponseDTO.class);
 
-		ResponseResultDTO responseEncontrado = responseOptional
+		PlanetaResponseDTO responseEncontrado = responseOptional
 				.orElseThrow(() -> new PlanetaNotFoundException("Erro durante a requisição, nada foi encontrado"));
 
 		if (!responseEncontrado.getResults().isEmpty()) {
-
-			@SuppressWarnings("unchecked")
-			List<PlanetaResponseDTO> planetaEncontrados = (List<PlanetaResponseDTO>) (List<?>) responseEncontrado
-					.getResults();
-
+			List<PlanetaResponseResultDTO> planetaEncontrados = responseEncontrado.getResults();
 			List<String> films = planetaEncontrados.get(0).getFilms();
-
 			Planeta planetaAserSalvo = new Planeta(planetaDTO.getNome(), planetaDTO.getClima(), planetaDTO.getTerreno(),
 					films.size());
 

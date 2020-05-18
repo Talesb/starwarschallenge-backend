@@ -3,7 +3,7 @@ package br.com.starwarschallenge.model;
 import java.io.Serializable;
 import java.util.List;
 
-public class ResponseResultDTO implements Serializable {
+public abstract class ResponseResultDTO implements Serializable {
 
 	/**
 	 * 
@@ -13,7 +13,6 @@ public class ResponseResultDTO implements Serializable {
 	private int count;
 	private String next;
 	private String previous;
-	private List<Object> results;
 
 	public int getCount() {
 		return count;
@@ -37,14 +36,6 @@ public class ResponseResultDTO implements Serializable {
 
 	public void setPrevious(String previous) {
 		this.previous = previous;
-	}
-
-	public List<Object> getResults() {
-		return results;
-	}
-
-	public void setResults(List<Object> results) {
-		this.results = results;
 	}
 
 }

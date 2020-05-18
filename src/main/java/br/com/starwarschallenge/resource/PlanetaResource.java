@@ -12,8 +12,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.starwarschallenge.exception.PlanetaNotFoundException;
-import br.com.starwarschallenge.model.Planeta;
 import br.com.starwarschallenge.model.PlanetaDTO;
 import br.com.starwarschallenge.service.PlanetaService;
 
