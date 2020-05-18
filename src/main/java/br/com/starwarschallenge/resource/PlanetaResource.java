@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -28,17 +29,17 @@ public class PlanetaResource {
 	}
 
 	@PostMapping
-	public ResponseEntity adicionarPlaneta(PlanetaDTO planetaDTO) throws Exception {
+	public ResponseEntity adicionarPlaneta(@RequestBody PlanetaDTO planetaDTO) throws Exception {
 		planetaService.adicionarPlaneta(planetaDTO);
 		return new ResponseEntity(HttpStatus.CREATED);
 	}
 
-	@GetMapping(path = "/{nome}")
+	@GetMapping(path = "nome/{nome}")
 	public PlanetaDTO buscarPorNome(@PathVariable("nome") String nome) throws Exception {
 		return planetaService.buscarPorNome(nome);
 	}
 
-	@GetMapping(path = "/{id}")
+	@GetMapping(path = "id/{id}")
 	public PlanetaDTO buscarPorID(@PathVariable("id") String id) throws Exception {
 		return planetaService.buscarPorId(id);
 	}

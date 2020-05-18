@@ -24,7 +24,7 @@ public class StarWarsRestClient {
 	}
 
 	public <T> Optional<T> findByName(String url, String name, Class<T> classType) {
-		return Optional.ofNullable(this.restTemplate.getForObject(url.concat("/?name=").concat(name), classType));
+		return Optional.ofNullable(this.restTemplate.getForObject(url.concat("/?search=").concat(name), classType));
 
 	}
 
