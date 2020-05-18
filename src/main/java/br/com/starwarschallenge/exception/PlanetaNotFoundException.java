@@ -7,7 +7,7 @@ public class PlanetaNotFoundException extends Exception implements Serializable 
 	private static final long serialVersionUID = -3254611742742744994L;
 
 	public PlanetaNotFoundException() {
-		super("Planet Not Found");
+		super("Planeta Não encontrado");
 	}
 
 	public PlanetaNotFoundException(String message) {
