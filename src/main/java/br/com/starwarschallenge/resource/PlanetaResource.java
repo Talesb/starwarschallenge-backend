@@ -19,7 +19,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
 @RestController
-@RequestMapping("/planeta")
+@RequestMapping("/planetas")
 @Api(value = "Planetas")
 public class PlanetaResource {
 
